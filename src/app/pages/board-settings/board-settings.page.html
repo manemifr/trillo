@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-button (click)="close()" color="primary">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Board Reglages</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="margin-top">
+  <ion-item *ngIf="board">
+    <ion-label position="fixed">Nom</ion-label>
+    <ion-input [(ngModel)]="board.name"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="board">
+    <ion-label position="stacked">Description</ion-label>
+    <ion-textarea rows="6" [(ngModel)]="board.desc"></ion-textarea>
+  </ion-item>
+
+  <ion-item
+    button
+    class="text-center"
+    (click)="deleteBoard()"
+    detail="false"
+    color="danger">
+    Fermer
+  </ion-item>
+</ion-content>

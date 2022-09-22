@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()" color="primary">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Board</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="create()" [disabled]="board.name ===''">
+        Creer
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item class="ion-margin-top">
+    <ion-label position="fixed"> Nom:</ion-label>
+    <ion-input [(ngModel)]="board.name"></ion-input>
+  </ion-item>
+  <ion-nav-link
+    router-direction="forward"
+    [component]="boardColorSelect"
+    [componentProps]="{selected: board.bg, callback: handleColorChange.bind(this)}">
+
+    <ion-item>
+      <ion-label position="fixed">Background</ion-label>
+      <div class="board-color-preview" [style.background]="board.bg" slot="end"></div>
+    </ion-item>
+
+  </ion-nav-link>
+</ion-content>

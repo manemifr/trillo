@@ -1,0 +1,48 @@
+
+
+<ion-content>
+  <ion-slides pager="true">
+    <ion-slide>
+      <ion-text color="light" class="intro-text">
+        <h1>Hello Trillo</h1>
+        <p>Ready to get stuff done?</p>
+      </ion-text>
+      <img src="assets/imgs/intro_1.png">
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/imgs/intro_2.png">
+      <ion-text color="light" class="intro-text">
+        <h1> Get organized</h1>
+        <p>Make a trillo board to organize anything with anyone</p>
+      </ion-text>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/imgs/intro_3.png">
+      <ion-text color="light" class="intro-text">
+        <h1> Add details</h1>
+        <p>Open cards to add pictures ,checklists,labels , and more</p>
+      </ion-text>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+
+<ion-footer>
+  <ion-row class="ion-padding">
+    <ion-col size="6" class="ion-text-left">
+      <ion-button color="light" fill="outline" (click)="openSignup()">Sign up</ion-button>
+    </ion-col>
+
+    <ion-col size="6" class="ion-text-right">
+      <ion-button color="light" fill="outline" (click)="openLogin()">Log In</ion-button>
+    </ion-col>
+
+    <ion-col size="12" class="ion-text-center ion-margin-top ion-margin-bottom">
+      <ion-text color="light">
+        By signing up , you agree to our <a href="#" (click)="openTerms($event)">Terms of Service</a> and
+         <a href="#" (click)="openPrivacy($event)">Privacy Policy</a>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+</ion-footer>

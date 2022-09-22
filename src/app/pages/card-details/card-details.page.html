@@ -1,0 +1,149 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="close()" color="light">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{card?.name}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="delete()" color="light">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="card">
+    <ion-item>
+      <ion-textarea
+        placeholder="Ajouter une description"
+        rows="3"
+        [(ngModel)]="card.desc"
+        (ionBlur)="updateCard('Description')">
+
+      </ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="time-outline" slot="start"></ion-icon>
+      <ion-label>Date prévue</ion-label>
+      <ion-input
+        value="{{card.due}}"
+        id="card.due"
+        class="ion-text-end">
+
+      </ion-input>
+      <ion-popover trigger="card.due" show-backdrop="false">
+        <ng-template>
+          <ion-datetime
+            presentation="date"
+            [(ngModel)]="card.due"
+            (ionChange)="updateCard('Due Date')">
+          </ion-datetime>
+        </ng-template>
+
+      </ion-popover>
+
+    </ion-item>
+
+
+
+    <ion-item *ngIf="members.length">
+      <ion-icon name="person-outline" slot="start"></ion-icon>
+      <ion-label>Assignee...</ion-label>
+      <ion-select
+        [(ngModel)]="card.assignee"
+        (ionChange)="updateCard('Assignee')"
+        >
+          <ion-select-option [value]="member.uid" *ngFor="let member of members">
+            {{member.displayName}}
+          </ion-select-option>
+
+      </ion-select>
+    </ion-item>
+
+    <!-- Checklist-->
+    <ion-item
+      button
+      (click)="showChecklist = !showChecklist;"
+      class="ion-margin-top"
+    >
+
+      <ion-icon name="checkbox-outline" slot="start"></ion-icon>
+      <ion-label>Checklist...</ion-label>
+      <ion-button
+        slot="end"
+        fill="clear"
+        color="medium"
+        (click)="deleteChecklist($event)"
+      >
+        <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-list *ngIf="showChecklist">
+      <ion-item-sliding *ngFor="let item of card.checklist; let i = index">
+        <ion-item>
+          <ion-checkbox
+            slot="start"
+            [(ngModel)]="item.checked"
+            (ionChange)="checklistItemChanged()"
+          ></ion-checkbox>
+          <ion-input
+
+            (keyup.enter)="checklistItemChanged()"
+            (ionBlur)="checklistItemChanged()"
+            [(ngModel)]="item.name"
+          >
+          </ion-input>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option
+            color="danger"
+            expandable
+            (click)="deleteChecklistItem(i)"
+          >
+            Supprimer
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+
+      <ion-item>
+        <ion-input
+          placeholder="Ajouter..."
+          (keyup.enter)="addChecklistItem()"
+          [(ngModel)]="newChecklistItem"
+        >
+        </ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-item button (click)="addAttachment()" class="ion-margin-top">
+      <ion-icon name="attach-outline" slot="start"></ion-icon>
+      <ion-label>Ajouter piéces jointes</ion-label>
+      <input type="file" #fileInput (change)="fileSelected($event)" hidden="true"/>
+    </ion-item>
+
+    <ion-item *ngIf="card.attachments.length">
+      <ion-slides pager="true">
+        <ion-slide *ngFor="let attach of card.attachments">
+          <img [src]="attach.fileUrl" *ngIf="attach.type === 'image'">
+          <div class="file-fallback ion-text-center" *ngIf="attach.type === 'file'"
+            tappable (click)="openFile(attach)">
+            <div>
+              <ion-icon name="document-outline" size="large" class="ion-padding-top">
+                {{attach.name}}
+              </ion-icon>
+            </div>
+
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </ion-item>
+
+  </div>
+
+</ion-content>

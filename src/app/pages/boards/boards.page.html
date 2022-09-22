@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>5CRON</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="add()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item button *ngFor="let board of boards | async"
+      [routerLink]="[board.id]" detail="false">
+      <div class="board-color-preview" [style.background]="board.bg" slot="start"></div>
+      <ion-label>
+        {{board.name}}
+
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

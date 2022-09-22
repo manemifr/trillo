@@ -1,0 +1,30 @@
+
+
+<ion-content>
+  <div class="hero ion-text-center ion-padding-top" *ngIf="user">
+     <h2>{{user.displayName}}</h2>
+     <ion-row class="ion-justify-content-center">
+      <ion-col size="2">
+        <ion-avatar *ngIf="user.photoURL; else dummy">
+          <img [src]="user.photoURL" />
+        </ion-avatar>
+        <ng-template #dummy>
+          <ion-avatar>
+            <img [src]="dummyAvatar"/>
+          </ion-avatar>
+        </ng-template>
+
+      </ion-col>
+     </ion-row>
+     <p>{{user.uid}}</p>
+  </div>
+
+  <ion-item button (click)="changeAvatar()" detail="false">
+    <ion-icon name="image-outline" slot="start"></ion-icon>
+    Changer Avatar
+  </ion-item>
+  <ion-item button (click)="signOut()" detail="false">
+    <ion-icon name="log-out-outline" slot="start"></ion-icon>
+    Déconnecter
+  </ion-item>
+</ion-content>

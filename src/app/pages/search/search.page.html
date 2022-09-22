@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Rechercher</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar
+    placeholder="Rechercher cartes par nom ...."
+    showCancelButton="focus"
+    debounce="500"
+    (ionChange)="searchFor($event)">
+
+  </ion-searchbar>
+
+  <app-task-card *ngFor= "let card of cards" [card]="card">
+
+  </app-task-card>
+
+  <div *ngIf=!cards.length class="ion-text-center ion-margin ion-padding">
+    Pas de tâches trouvées. <br/>
+    <ion-icon
+      name ="search-circle-outline"
+      size="large"
+      class="ion-padding-top">
+
+    </ion-icon>
+  </div>
+
+</ion-content>

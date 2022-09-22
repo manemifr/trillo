@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()" color="primary">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Se Connecter</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-top">
+  <form (ngSubmit)="signIn()" [formGroup]="loginForm">
+    <ion-item lines="inset">
+      <ion-input
+        placeholder="Adresse email"
+        type="email"
+        formControlName="email"
+        autofocus="true"
+        clearInput="true">
+
+      </ion-input>
+    </ion-item>
+      <!-- Only display after email input-->
+    <ion-item
+        lines="inset"
+        *ngIf="!(loginForm.get('email').hasError('required') ||
+        loginForm.get('email').hasError('email'))"
+        >
+      <ion-input
+      placeholder="Mot de passe"
+      type="password"
+      formControlName="password"
+      clearInput="true">
+
+      </ion-input>
+
+    </ion-item>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="10">
+        <ion-button
+        expand="block"
+        type="submit"
+        [fill]="loginForm.controls.email.value !== ''? 'solid': 'outline'"
+        [color]="loginForm.controls.email.value !== '' ? 'success': 'medium'"
+        [disabled]="!loginForm.valid"
+        >
+        Se Connecter
+        </ion-button>
+      </ion-col>
+
+      <!-- Our custom forward navigation-->
+      <ion-col size="12">
+        <ion-nav-link router-direction="forward" [component]="resetPwPage">
+          <ion-button expand="block" size="small" type="button" fill="clear" color="primary">
+            Mot de passe oublié?
+          </ion-button>
+          </ion-nav-link>
+      </ion-col>
+
+      <!-- Social Login buttons-->
+      <ion-col size="10">
+        <ion-button
+          expand="block"
+          type="button"
+          (click)="openGoogleSignup()"
+          color="dark"
+          fill="outline"
+          >
+            <ion-icon name="logo-google" slot="start"></ion-icon>
+            S'enregistrer avec Google
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+
+  </form>
+
+
+</ion-content>

@@ -24,3 +24,38 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.custom-action-sheet {
+  --max-width: 100%;
+  .action-sheet-container {
+    padding: 0px;
+  }
+  .action-sheet-group{
+    margin-bottom: 0px !important;
+    border-radius: 13px 13px 0px 0px;
+  }
+  .action-sheet-button-inner{
+    justify-content: start;
+  }
+  .action-sheet-group{
+    margin-bottom: 0px !important;
+  }
+}
+
+.board-color-preview{
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+ion-avatar.avatar-dummy-small{
+  background: #bfbfbf;
+  p{
+    width: 100%;
+    margin: auto;
+    line-height: 36px;
+    text-align: center;
+    font-weight: 600;
+    font-size: larger;
+  }
+}

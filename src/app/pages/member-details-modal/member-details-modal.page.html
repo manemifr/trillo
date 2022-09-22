@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()" color="primary">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>{{member?.displayName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-avatar *ngIf="member.photoURL" slot="start">
+      <img [src]="member.photoURL"/>
+    </ion-avatar>
+    <ion-avatar
+    *ngIf="!member.photoURL || member.photoURL ===''"
+    slot="start"
+    class="avatar-dummy-small"
+    >
+      <p>{{member.displayName[0]}}</p>
+    </ion-avatar>
+    <ion-label>
+      {{member.displayName}}
+      <p>{{member.email}}</p>
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Role
+    </ion-label>
+    <ion-label slot="end">
+      {{memberIsAdmin ? 'Admin': 'User'}}
+    </ion-label>
+  </ion-item>
+
+  <ion-button
+    expand="full"
+    color="danger"
+    (click)="remove()"
+    [disabled]="!isAdmin && !isSelf"
+    > Supprimer
+
+  </ion-button>
+</ion-content>

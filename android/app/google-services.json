@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "946399230784",
+    "project_id": "ionic-trillo-ce464",
+    "storage_bucket": "ionic-trillo-ce464.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946399230784:android:7b1c0b8974d08d4a1e58a5",
+        "android_client_info": {
+          "package_name": "com.learntocode.trillo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946399230784-1hit2791q2s6761cepds36vnv1ukov9l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.learntocode.trillo",
+            "certificate_hash": "32417252f9b146245bfbf0d381bc515695f0e7fe"
+          }
+        },
+        {
+          "client_id": "946399230784-0ms94obdrgdtd24gscqct518utdu349t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoozdnIycr1ECQsYWBkedmoLR9hy45FHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946399230784-0ms94obdrgdtd24gscqct518utdu349t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

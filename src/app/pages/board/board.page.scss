@@ -1,0 +1,50 @@
+.list-add{
+  margin-top: 24px;
+  width: 100%;
+}
+
+ion-card{
+  --background: #DEE0E5;
+
+  ion-input{
+    --background: #fff;
+  }
+
+  width: 100%;
+  margin-inline-start:0px;
+  margin-inline-end:0px;
+
+  ion-card-content{
+    padding-inline-end: 8px;
+    padding-inline-start: 8px;
+    padding-top:8px;
+    padding-bottom:8px;
+  }
+}
+
+ion-button.focus-btn{
+  font-weight: 700;
+}
+
+ion-input{
+  text-align: start;
+  --padding-start:8px
+}
+
+ion-slides{
+  min-height: calc(100% - 64px);
+}
+
+ion-slide{
+  max-height: calc(100% - 34px);
+}
+
+ion-list{
+  --ion-background-color: transparent;
+}
+
+ion-item{
+  margin-bottom: 10px;
+  border-radius: 4px;
+  --ion-background-color: #fff;
+}

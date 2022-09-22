@@ -1,0 +1,19 @@
+ion-menu.md{
+  top: calc(56px + env(safe-area-inset-top));
+}
+
+ion-menu-ios{
+  top: calc(56px + env(safe-area-inset-top));
+}
+
+ion-avatar{
+  background: #bfbfbf;
+  p{
+    width:100%;
+    margin: auto;
+    line-height: 48px;
+    text-align: center;
+    font-weight: 600;
+    font-size: larger;
+  }
+}

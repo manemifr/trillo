@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">trillo</string>
+    <string name="title_activity_main">trillo</string>
+    <string name="package_name">com.learntocode.trillo</string>
+    <string name="custom_url_scheme">com.learntocode.trillo</string>
+    <string name="server_client_id">946399230784-0ms94obdrgdtd24gscqct518utdu349t.apps.googleusercontent.com</string>
+</resources>

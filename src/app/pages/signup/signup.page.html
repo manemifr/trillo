@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()" color="primary">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-top">
+  <form (ngSubmit)="signUp()" [formGroup]="registerForm">
+    <ion-item [lines]="showDetails ? 'inset': 'none'">
+      <ion-input
+      placeholder="Email address"
+      formControlName="email"
+      autofocus="true"
+      clearInput="true"
+      ></ion-input>
+    </ion-item>
+
+    <!--Only show the following fields after email was entered-->
+    <ion-item lines="inset" *ngIf="showDetails">
+      <ion-input
+      placeholder="Full name"
+      formControlName="fullname"
+      clearInput="true"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item lines="inset" *ngIf="showDetails">
+      <ion-input
+      placeholder="Password"
+      type="password"
+      formControlName="password"
+      clearInput="true"
+      ></ion-input>
+    </ion-item>
+    <!-- End of conditional fields-->
+    <ion-row>
+      <ion-col size="10" offset="1">
+        <ion-button
+        expand="block"
+        type="button"
+        (click)="continue()"
+        [fill]="registerForm.controls.email.value !== '' ? 'solid' : 'outline'"
+        [color]="registerForm.controls.email.value !== '' ? 'success': 'medium'"
+        [disabled]="registerForm.controls.email.value === ''"
+        *ngIf="!showDetails"
+        >Continue</ion-button>
+
+        <ion-button
+        expand="block"
+        type="submit"
+        [fill]="registerForm.valid ? 'solid' : 'outline'"
+        [color]="registerForm.valid ? 'success': 'medium'"
+        [disabled]= "!registerForm.valid"
+        *ngIf="showDetails">Sign Up</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-content>

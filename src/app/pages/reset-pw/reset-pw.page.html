@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Se Connecter"></ion-back-button>
+    </ion-buttons>
+    <ion-title>No Problem</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-top">
+  <ion-item lines="inset">
+    <ion-input
+      placeholder="Adresse email"
+      type="email"
+      [(ngModel)]="email"
+      autofocus="true"
+      clearInput="true"
+      >
+
+    </ion-input>
+  </ion-item>
+
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="10">
+      <ion-button expand="block" color="primary" (click)="sendResetEmail()">
+        Envoyer lien récuperation
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

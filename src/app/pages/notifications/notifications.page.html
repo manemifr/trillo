@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Notifications</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="removeNotifications()">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="(notifications | async)?.length">
+    <ion-item
+      button
+      *ngFor="let item of notifications |async"
+      (click)="openCard(item)"
+      [class.unread]="!item.read"
+      >
+        <ion-label>
+          {{item.msg}}
+          <p>{{item.createdAt.seconds*1000 | date:'short'}}</p>
+        </ion-label>
+
+    </ion-item>
+
+    <div
+      *ngIf="!((notifications |async)?.length)"
+      class="ion-text-center ion-margin ion-padding"
+      >
+        Aucune Notification. <br />
+        <ion-icon
+          name="notifications-outline"
+          size="large"
+          class="ion-padding-top">
+
+        </ion-icon>
+    </div>
+  </ion-list>
+</ion-content>

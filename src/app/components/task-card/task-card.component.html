@@ -1,0 +1,31 @@
+<ion-card button (click)="openCard()">
+  <ion-item lines="none">
+    <ion-avatar *ngIf="avatar" slot="start">
+      <img [src]="avatar">
+    </ion-avatar>
+    <ion-label> {{card.name}}
+      <p>
+        <ion-icon name="time-outline"></ion-icon>
+        {{card.due | customDate}}
+      </p>
+    </ion-label>
+  </ion-item>
+
+
+  <ion-card-content>
+    {{card.desc}}
+  </ion-card-content>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="3" *ngIf="card.attachments.length">
+        <ion-icon name="attach-outline"></ion-icon>
+        {{card.attachments.length}}
+      </ion-col>
+      <ion-col size="3" *ngIf="card.checklist.length">
+        <ion-icon name="checkbox-outline"></ion-icon>
+        {{card.checklist.length}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()" color="primary">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+    <ion-title>Inviter Membres</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [formGroup]="search">
+    <ion-searchbar
+    placeholder="Recherche par nom ou email..."
+    formControlName="value"
+    showCancelButton="focus"
+    debounce="500"
+    ></ion-searchbar>
+
+  </div>
+
+  <ion-list *ngIf="users.length">
+    <ion-item button *ngFor="let usr of users" (click)="addUser(usr)">
+      <ion-avatar *ngIf="usr.photoURL" slot="start">
+        <img [src]="usr.photoURL"/>
+      </ion-avatar>
+      <ion-avatar
+        *ngIf="!usr.photoURL || usr.photoURL === ''"
+        slot="start"
+        class="avatar-dummy-small"
+        >
+          <p>{{usr.displayName[0]}}</p>
+      </ion-avatar>
+      <ion-label>
+        {{usr.displayName}}
+        <p>{{usr.email}}</p>
+      </ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="add-circle-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+  </ion-list>
+
+  <div *ngIf="!users.length" class="ion-text-center ion-margin ion-padding">
+    Rechercher des personnes par nom ou email pour les ajouter à votre carte. <br/>
+    <ion-icon
+      name="person-outline"
+      size="large"
+      class="ion-padding-top">
+
+    </ion-icon>
+  </div>
+</ion-content>
